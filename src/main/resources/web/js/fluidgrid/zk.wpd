@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<package name="fluidgrid" language="xul/html" depends="zul" >
+	<widget name="Rowchildren" />
+	<widget name="Rowlayout" />
+</package>

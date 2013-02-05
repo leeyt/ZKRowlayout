@@ -1,0 +1,30 @@
+<language-addon>
+    <addon-name>fluidgrid</addon-name>
+  	<version>
+		<version-class>org.zkoss.addon.fluidgrid.Version</version-class>
+		<version-uid>1.0</version-uid>
+		<zk-version>6.5.2-SNAPSHOT</zk-version>
+	</version>
+    
+	<language-name>xul/html</language-name>
+	<component>
+		<component-name>rowchildren</component-name>
+		<component-class>org.zkoss.addon.fluidgrid.Rowchildren</component-class>
+		<widget-class>fluidgrid.Rowchildren</widget-class>
+		<mold>
+			<mold-name>default</mold-name>
+			<mold-uri>mold/rowchildren.js</mold-uri>
+			<css-uri>css/rowchildren.css.dsp</css-uri>
+		</mold>
+	</component>
+	<component>
+	    <component-name>rowlayout</component-name>
+	    <component-class>org.zkoss.addon.fluidgrid.Rowlayout</component-class>
+	    <widget-class>fluidgrid.Rowlayout</widget-class>
+	    <mold>
+	        <mold-name>default</mold-name>
+	        <mold-uri>mold/rowlayout.js</mold-uri>
+	    	<css-uri>css/rowlayout.css.dsp</css-uri>
+	    </mold>
+	</component>
+</language-addon>
