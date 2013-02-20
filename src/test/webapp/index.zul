@@ -1,0 +1,7 @@
+<window mode="overlapped" border="normal" position="center">
+	<vlayout>
+		<button onClick='Executions.sendRedirect("spec.zul")'>Static Scenario</button>
+		<button onClick='Executions.sendRedirect("mvvm.zul")'>Dynamic Scenario</button>
+		<button onClick='Executions.sendRedirect("builder.zul")'>Simple Layout Builder</button>
+	</vlayout>
+</window>

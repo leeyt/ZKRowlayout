@@ -1,0 +1,29 @@
+<zk xmlns:n="native">
+	<n:b>Using MVVM to control rowlayout's parameters</n:b>
+	<window 
+		apply="org.zkoss.bind.BindComposer" 
+		viewModel="@id('vm') @init('test.ctrl.TestViewModel1')">
+		<rowlayout ncols="10" spacing="1/12">
+			<rowchildren>ncols</rowchildren>
+			<rowchildren>
+				<spinner hflex="1" instant="true" value="@bind(vm.ncols)" constraint="no empty,min 1 max 12"/>
+			</rowchildren>
+			<rowchildren>spacing</rowchildren>
+			<rowchildren>
+				<textbox hflex="1" value="@bind(vm.spacing)" />
+			</rowchildren>
+		</rowlayout>
+		
+		<rowlayout id="rowlayout1" ncols="@bind(vm.ncols)" spacing="@bind(vm.spacing)">
+			<rowchildren forEach="1,1,1,1,1,1,1,1,1,1,1,1" colspan="${each}">
+				<window border="normal" title="colspan=1" hflex="1" />
+			</rowchildren>
+		</rowlayout>
+	</window>
+		
+	<script defer="true">
+	jq('.z-window-embedded-cnt')
+		.attr('contentEditable', '')
+		.css('min-height', '30px');
+	</script>
+</zk>

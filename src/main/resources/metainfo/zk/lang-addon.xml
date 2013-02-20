@@ -2,8 +2,8 @@
     <addon-name>fluidgrid</addon-name>
   	<version>
 		<version-class>org.zkoss.addon.fluidgrid.Version</version-class>
-		<version-uid>1.0</version-uid>
-		<zk-version>6.5.2-SNAPSHOT</zk-version>
+		<version-uid>0.8</version-uid>
+		<zk-version>6.5.0</zk-version>
 	</version>
     
 	<language-name>xul/html</language-name>
