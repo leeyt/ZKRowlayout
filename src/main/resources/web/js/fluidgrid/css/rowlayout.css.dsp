@@ -8,4 +8,5 @@
   display: table;
   line-height: 0;
   content: "";
+  clear: both;
 }
