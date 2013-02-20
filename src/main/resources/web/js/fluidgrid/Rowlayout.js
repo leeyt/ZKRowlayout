@@ -1,7 +1,7 @@
 var Rowlayout = 
 fluidgrid.Rowlayout = zk.$extends(zul.Widget, {
 	// Logically, the parent container is divided into equal-width columns with spacing in between.
-	// Together, the number of columns and their separation define the layout of the row
+	// Together, the number of columns and their separation determine the layout of the row
 	_ncols:    12,
 	_spacing:  20/60,
 	
@@ -39,19 +39,6 @@ fluidgrid.Rowlayout = zk.$extends(zul.Widget, {
 		for (var w = this.firstChild; w; w = w.nextSibling) {
 			if (w.desktop) this._fixChild(w);
 		}
-
-		/*
-		var n = this.$n(), cs = getComputedStyle(n),
-			newwth = cs.getPropertyValue('width'),
-			newhgh = cs.getPropertyValue('height');
-		
-		if (newwth != this._oldwth || newhgh != this._oldhgh) {
-			this._oldwth = newwth;
-			this._oldhgh = newhgh;
-
-			zUtl.fireSized(this.parent);		
-		}
-		*/
 	},
 	
 	_syncSizingParam: function() {
@@ -80,24 +67,15 @@ fluidgrid.Rowlayout = zk.$extends(zul.Widget, {
 		}
 
 		var n = child.$n(),
-			cw = parseInt(getComputedStyle(this.parent.$n()).getPropertyValue('width'))*pColWidth;
+			offset = child._offset,
+			marginLeft = (offset > 0) ? offsetMarginRatio(offset) : pSpacing;
 		
-		// Make sure column does not become too narrow
-		if (cw >= 50) {
-			var offset = child._offset,
-				marginLeft = (offset > 0) ? offsetMarginRatio(offset) : pSpacing;
-		
-			jq(n)
-				.css('width', percent(colspanWidthRatio(child._colspan)))
-				.css('margin-left', 
-					(child == child.parent.firstChild)
-					? percent(marginLeft - pSpacing) 
-					: percent(marginLeft));
-		} else {
-			jq(n)
-				.css('width', '100%')
-				.css('margin-left', 0);
-		}
+		jq(n)
+			.css('width', percent(colspanWidthRatio(child._colspan)))
+			.css('margin-left', 
+				(child == child.parent.firstChild)
+				? percent(marginLeft - pSpacing) 
+				: percent(marginLeft));
 		
 		// only fire when child has h/vflex
 		for (var w = child.firstChild; w; w = w.nextSibling) {
@@ -116,20 +94,6 @@ fluidgrid.Rowlayout = zk.$extends(zul.Widget, {
 	unbind_: function() {
 		zWatch.unlisten({onSize: this});
 		this.$supers('unbind_', arguments);
-	},
-	
-	beforeParentMinFlex_: function(attr) {
-		if (attr === 'h') {
-			console.log('parent: ' + getComputedStyle(this.$n()).getPropertyValue('height'));
-		}		
-	},
-	
-	afterChildrenFixFlex_: function() {
-		console.log('afterChildrenFixFlex_');
-	},
-	
-	afterResetChildSize_: function(kid) {
-		console.log('afterResetChildSize_');
 	},
 	
 	onSize: function() {

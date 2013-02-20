@@ -14,16 +14,7 @@ fluidgrid.Rowchildren = zk.$extends(zul.Widget, {
 					n = this.$n();
 					cls = n.className;
 					n.className = cls.replace(/colspan\d+/, '') + ' colspan' + this._colspan;
-					console.log(n.className);
 					this.parent._fixChild(this);
-					
-					// only fire when child has h/vflex
-					for (var w = this.firstChild; w; w = w.nextSibling) {
-						if (w._nvflex || w._nhflex) {
-							zUtl.fireSized(this);
-							break;
-						}
-					}
 				}
 			}
 		],
